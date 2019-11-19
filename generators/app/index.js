@@ -14,10 +14,31 @@ module.exports = class extends Generator {
 
     const prompts = [
       {
-        type: "confirm",
-        name: "someAnswer",
-        message: "Would you like to enable this option?",
-        default: true
+        type: "input",
+        name: "name",
+        message: "Project name: ",
+        default: "marmot"
+      },
+      {
+        type: "input",
+        name: "version",
+        message: "Project version: ",
+        default: "0.0.1"
+      },
+      {
+        type: "input",
+        name: "description",
+        message: "Project description: "
+      },
+      {
+        type: "input",
+        name: "author",
+        message: "Author: "
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "Author Email: "
       }
     ];
 
@@ -28,9 +49,21 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath("dummyfile.txt"),
-      this.destinationPath("dummyfile.txt")
+    let createDirName = "marmot";
+    if (this.props.name) {
+      createDirName = this.props.name;
+    }
+
+    this.fs.copyTpl(
+      this.templatePath("package.json"),
+      this.destinationPath(`${createDirName}/package.json`),
+      {
+        name: this.props.name,
+        serverDescription: this.props.description,
+        serverVersion: this.props.version,
+        author: this.props.author,
+        authorEmail: this.props.email
+      }
     );
   }
 
