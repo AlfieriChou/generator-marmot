@@ -59,10 +59,10 @@ module.exports = class extends Generator {
       this.destinationPath(`${createDirName}/package.json`),
       {
         name: this.props.name,
-        serverDescription: this.props.description,
-        serverVersion: this.props.version,
+        description: this.props.description,
+        version: this.props.version,
         author: this.props.author,
-        authorEmail: this.props.email
+        email: this.props.email
       }
     );
   }
