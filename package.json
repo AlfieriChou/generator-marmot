@@ -77,7 +77,8 @@
   },
   "scripts": {
     "pretest": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "release": "standard-version"
   },
   "repository": "https://github.com/AlfieriChou/generator-marmot",
   "license": "MIT"
