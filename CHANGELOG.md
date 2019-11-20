@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/AlfieriChou/generator-marmot/compare/v0.0.2...v0.1.0) (2019-11-20)
+
+
+### Features
+
+* dev dependencies ([f26fb86](https://github.com/AlfieriChou/generator-marmot/commit/f26fb860187469e0da697aa8c9073471495a49f6))
+
+
+### Bug Fixes
+
+* package.json ([a0bd0f3](https://github.com/AlfieriChou/generator-marmot/commit/a0bd0f3111c8124bbb406ceef7347993a275fbbe))
+
 ### [0.0.2](https://github.com/AlfieriChou/generator-marmot/compare/v0.0.1...v0.0.2) (2019-11-19)
 
 ### 0.0.1 (2019-11-19)
