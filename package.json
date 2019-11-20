@@ -21,9 +21,7 @@
     "@commitlint/config-conventional": "^8.2.0",
     "coveralls": "^3.0.7",
     "eslint": "^6.6.0",
-    "eslint-config-prettier": "^6.6.0",
-    "eslint-config-xo": "^0.27.2",
-    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-config-airbnb-standard": "^3.0.1",
     "husky": "^3.0.9",
     "jest": "^24.8.0",
     "lint-staged": "^9.4.3",
@@ -37,6 +35,7 @@
   },
   "dependencies": {
     "chalk": "^2.1.0",
+    "lodash": "^4.17.15",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
@@ -45,7 +44,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
+      "yarn run lint",
       "git add"
     ],
     "*.json": [
@@ -61,24 +60,20 @@
   },
   "eslintConfig": {
     "extends": [
-      "xo",
-      "prettier"
+      "airbnb-standard"
     ],
-    "env": {
-      "jest": true,
-      "node": true
-    },
     "rules": {
-      "prettier/prettier": "error"
-    },
-    "plugins": [
-      "prettier"
-    ]
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
   },
   "scripts": {
-    "pretest": "eslint .",
+    "pretest": "yarn run lint",
     "test": "jest",
-    "release": "standard-version"
+    "release": "standard-version",
+    "lint": "eslint --ext .js ./ --fix"
   },
   "repository": "https://github.com/AlfieriChou/generator-marmot",
   "license": "MIT"
