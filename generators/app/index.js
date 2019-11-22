@@ -47,6 +47,12 @@ module.exports = class extends Generator {
         type: 'confirm',
         message: 'Add eslint and commitlint to this project?',
         default: true
+      },
+      {
+        name: 'standardVersion',
+        type: 'confirm',
+        message: 'Add standard-version to this project?',
+        default: true
       }
     ]
 
@@ -95,7 +101,20 @@ module.exports = class extends Generator {
         this.templatePath('.huskyrc.js'),
         this.destinationPath(`${createDirName}/.huskyrc.js`)
       )
-      const devDependencies = _.pick(pkgJson.devDependencies, ['@commitlint/cli', '@commitlint/config-conventional', 'eslint', 'eslint-config-airbnb-standard', 'husky', 'lint-staged', 'standard-version'])
+      this.fs.copy(
+        this.templatePath('.gitignore'),
+        this.destinationPath(`${createDirName}/.gitignore`)
+      )
+      const devDependencies = _.pick(pkgJson.devDependencies, ['@commitlint/cli', '@commitlint/config-conventional', 'eslint', 'eslint-config-airbnb-standard', 'husky', 'lint-staged'])
+      pkg.devDependencies = Object.assign(pkg.devDependencies, devDependencies)
+    }
+
+    if (this.props.standardVersion) {
+      this.fs.copy(
+        this.templatePath('Makefile'),
+        this.destinationPath(`${createDirName}/Makefile`)
+      )
+      const devDependencies = _.pick(pkgJson.devDependencies, ['standard-version'])
       pkg.devDependencies = Object.assign(pkg.devDependencies, devDependencies)
     }
 
