@@ -101,10 +101,11 @@ module.exports = class extends Generator {
         this.templatePath('.huskyrc.js'),
         this.destinationPath(`${createDirName}/.huskyrc.js`)
       )
-      this.fs.copy(
-        this.templatePath('.gitignore'),
-        this.destinationPath(`${createDirName}/.gitignore`)
-      )
+      // 上传至npm导致gitignore更名为npmignore 先注释复制gitignore文件
+      // this.fs.copy(
+      //   this.templatePath('.gitignore'),
+      //   this.destinationPath(`${createDirName}/.gitignore`)
+      // )
       const devDependencies = _.pick(pkgJson.devDependencies, ['@commitlint/cli', '@commitlint/config-conventional', 'eslint', 'eslint-config-airbnb-standard', 'husky', 'lint-staged'])
       pkg.devDependencies = Object.assign(pkg.devDependencies, devDependencies)
     }
